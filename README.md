@@ -1,2 +1,3 @@
-# fear-of-forgetting
-Project for the Information Visualization 2025/2026 course
+# FoF
+## Fear of Forgetting
+Individual project for the Information Visualization 2025/2026 course
