@@ -1,0 +1,907 @@
+/* 
+ * Fear of Forgetting (FoF) Webpage Stylesheet
+ * Vintage Analog Film Photography & Scrapbook Collage Aesthetic
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Reenie+Beenie&family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+  /* Color Palette - Desaturated Analog Film Styles (Polaroid/35mm) */
+  --bg-paper: #f4eedf;       /* Vintage desaturated paper cream with more warmth */
+  --fg-dark: #1b1b1b;        /* Charcoal film black */
+  --film-blue-dark: #1f2f3c; /* Shadow film desaturated blue (project color used for nav) */
+  --film-blue: #2d4554;      /* Mid-tone film desaturated blue */
+  --film-blue-light: #526f82;/* Sky desaturated blue-grey */
+  --film-green-dark: #2a382c;/* Shadow desaturated moss green */
+  --film-green: #3c4f3f;     /* Mid-tone Polaroid green */
+  --film-green-light: #647a67;/* Vintage leaf green-grey */
+  --film-red-dark: #6e2723;  /* Desaturated dark red */
+  --film-red: #8f3833;       /* Red accent */
+  --card-tan: #e2decb;       /* Polaroid paper backing card */
+  --card-grey: #dad5c3;      /* Darker card stock */
+  
+  /* Font Stacks */
+  --font-body: 'Indie Flower', cursive, sans-serif;
+  --font-title: 'Reenie Beenie', cursive, sans-serif;
+  --font-sans: 'Outfit', sans-serif;
+  --font-handwritten: 'Reenie Beenie', cursive, sans-serif;
+  
+  --transition-classic: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --shadow-glued: 2px 4px 8px rgba(0, 0, 0, 0.18), 1px 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-paper);
+  color: var(--fg-dark);
+  font-family: var(--font-body);
+  font-size: 20px; /* Slightly larger because Indie Flower is highly organic and legible when large */
+  line-height: 1.6;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* -------------------------------------------------------------
+ * 1. Film Grain & Moving Celluloid Scratch Overlay
+ * ------------------------------------------------------------- */
+
+/* Infinite Film Grain Layer */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.055;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.film-grain::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: grain-animation 0.15s steps(4) infinite;
+}
+
+@keyframes grain-animation {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(-2%, 1%); }
+  30% { transform: translate(1%, -2%); }
+  40% { transform: translate(-1%, 3%); }
+  50% { transform: translate(-2%, 1%); }
+  60% { transform: translate(1%, 2%); }
+  70% { transform: translate(2%, -2%); }
+  80% { transform: translate(-1%, 1%); }
+  90% { transform: translate(1%, -1%); }
+}
+
+/* Dynamic Celluloid Scratches Overlay */
+.film-scratches {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.film-scratches::before, .film-scratches::after {
+  content: "";
+  position: absolute;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+/* Animated Hair/Scratch lines flashing */
+.film-scratches::before {
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Cpath d='M100 200 Q 110 250, 95 320 T 115 450' stroke='black' stroke-width='0.7' fill='none' stroke-dasharray='1 4'/%3E%3Cpath d='M650 50 Q 640 180, 660 300' stroke='black' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='400' cy='250' r='1.5' fill='black'/%3E%3Ccircle cx='150' cy='480' r='1' fill='black'/%3E%3C/svg%3E");
+  animation: scratch-flash 0.8s steps(1) infinite;
+}
+
+.film-scratches::after {
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Cpath d='M250 50 Q 240 100, 245 180' stroke='black' stroke-width='0.6' fill='none'/%3E%3Cpath d='M500 400 Q 520 440, 505 520' stroke='black' stroke-width='0.8' fill='none' stroke-dasharray='5 2 1 2'/%3E%3Ccircle cx='550' cy='120' r='1.2' fill='black'/%3E%3C/svg%3E");
+  animation: scratch-flash-alt 1.4s steps(1) infinite;
+}
+
+@keyframes scratch-flash {
+  0%, 100% { opacity: 0; transform: scale(1) translate(0,0); }
+  8% { opacity: 0.8; transform: scale(1.05) translate(2%, -1%); }
+  15% { opacity: 0; }
+  45% { opacity: 0.6; transform: scale(0.95) rotate(90deg) translate(-2%, 3%); }
+  49% { opacity: 0; }
+  80% { opacity: 0.9; transform: scale(1.02) rotate(180deg) translate(1%, 2%); }
+  84% { opacity: 0; }
+}
+
+@keyframes scratch-flash-alt {
+  0%, 100% { opacity: 0; transform: scale(1) rotate(0deg); }
+  12% { opacity: 0.7; transform: scale(0.98) translate(-1%, 4%) rotate(5deg); }
+  17% { opacity: 0; }
+  60% { opacity: 0.8; transform: scale(1.04) translate(3%, -3%) rotate(-10deg); }
+  64% { opacity: 0; }
+}
+
+/* -------------------------------------------------------------
+ * 2. Scrapbook Ransom-Note Typography (Black & White)
+ * ------------------------------------------------------------- */
+
+/* Ransom Note Container */
+.ransom-note {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Individual letter paper cut */
+.ransom-char {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.7rem;
+  font-family: var(--font-typewriter);
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  user-select: none;
+  box-shadow: var(--shadow-glued);
+  position: relative;
+  transition: transform 0.2s ease;
+  margin: 1px;
+}
+
+.ransom-char:hover {
+  transform: translateY(-4px) scale(1.1) rotate(5deg) !important;
+  z-index: 10;
+}
+
+/* Disable individual letter hover transitions inside logo and hero title */
+.logo .ransom-char:hover,
+.hero-caption-card h1 .ransom-char:hover {
+  transform: none !important;
+  z-index: 1 !important;
+}
+
+/* Scrappy appear load animation */
+@keyframes scrappy-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.1) rotate(-20deg) translate(-30px, 40px);
+  }
+  15% {
+    opacity: 0.8;
+    transform: scale(1.25) rotate(12deg) translate(8px, -8px);
+  }
+  30% {
+    opacity: 0.4;
+    transform: scale(0.85) rotate(-10deg) translate(-5px, 4px);
+  }
+  45% {
+    opacity: 0.9;
+    transform: scale(1.08) rotate(6deg) translate(3px, -3px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    /* final transform will be set dynamically in script.js */
+  }
+}
+
+.ransom-char.animate-in {
+  opacity: 0;
+  animation: scrappy-appear 0.7s steps(6) forwards;
+}
+
+/* Dynamic styling classes applied via JS script */
+.char-style-0 {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: monospace;
+  border: 1px solid rgba(0,0,0,0.25);
+  clip-path: polygon(2% 4%, 96% 2%, 98% 95%, 4% 97%);
+}
+
+.char-style-1 {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  clip-path: polygon(5% 1%, 95% 4%, 92% 98%, 1% 92%);
+}
+
+.char-style-2 {
+  background-color: #f0ebe1;
+  color: #1a1a1a;
+  font-family: var(--font-title);
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+  clip-path: polygon(3% 5%, 98% 1%, 95% 92%, 6% 98%);
+}
+
+.char-style-3 {
+  background-color: #1a1a1a;
+  color: #f7f7f7;
+  font-family: Georgia, serif;
+  font-style: italic;
+  clip-path: polygon(1% 8%, 94% 6%, 99% 94%, 3% 90%);
+}
+
+.char-style-4 {
+  background-color: #ffffff;
+  color: #111111;
+  font-family: var(--font-handwritten);
+  font-size: 2.2rem;
+  border: 1.5px dashed #000;
+  clip-path: polygon(4% 2%, 97% 5%, 96% 96%, 2% 93%);
+}
+
+/* -------------------------------------------------------------
+ * 3. Navigation Bar
+ * ------------------------------------------------------------- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: var(--film-blue-dark); /* Color associated to project section */
+  border-bottom: 2px solid rgba(255,255,255,0.15);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* Logo ransom spacing */
+header .logo {
+  text-decoration: none;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+header .logo:hover {
+  transform: translateY(-4px) rotate(2deg) scale(1.05); /* Logo hovers as a whole! */
+}
+
+header .logo .ransom-char {
+  width: 1.8rem;
+  height: 2.2rem;
+  font-size: 1.2rem;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+nav ul li {
+  font-family: var(--font-title);
+  font-size: 2.1rem; /* Reenie Beenie sizing */
+  font-weight: bold;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: var(--bg-paper); /* Light cream for excellent legibility on dark blue header */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  padding: 5px 0;
+  transition: color var(--transition-classic);
+}
+
+nav ul li a:hover {
+  color: var(--film-red);
+}
+
+/* Hand-drawn underline */
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2.5px;
+  background: var(--bg-paper);
+  background-image: linear-gradient(to right, var(--bg-paper) 70%, transparent 100%);
+  transition: width 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+  clip-path: polygon(0% 12%, 100% 0%, 98% 85%, 2% 100%);
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* -------------------------------------------------------------
+ * 4. Hero Section - Cinematic Split Slideshow
+ * ------------------------------------------------------------- */
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* Split-screen panels */
+.hero-split-panel {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-top {
+  top: 0;
+}
+
+.hero-bottom {
+  bottom: 0;
+}
+
+/* Hero 4-Column Grid layout to display 8 pictures simultaneously */
+.hero-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  height: 100%;
+}
+
+.slideshow-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-right: 1px solid rgba(0,0,0,0.06);
+}
+
+.slideshow-container:last-child {
+  border-right: none;
+}
+
+.slide-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.4s ease-in-out;
+  opacity: 0;
+  filter: contrast(1.05) brightness(0.92);
+}
+
+.slide-img.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Top Color filters */
+.hero-top .slide-img {
+  filter: sepia(0.15) saturate(1.2) contrast(1.05) brightness(0.9);
+}
+
+/* Bottom desaturated B&W filters */
+.hero-bottom .slide-img {
+  filter: grayscale(1) contrast(1.25) brightness(0.85);
+}
+
+/* The Horizontal Dividing Card (Polaroid margin band) */
+.hero-divider {
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  width: 100vw;
+  height: 38px;
+  transform: translateY(-50%);
+  background-color: var(--card-tan);
+  border-top: 2.5px solid rgba(0,0,0,0.18);
+  border-bottom: 2.5px solid rgba(0,0,0,0.18);
+  z-index: 5;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: background-color 0.4s ease;
+  overflow: hidden;
+}
+
+/* Scrappy card grain line border texture inside the card */
+.hero-divider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(90deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 15px);
+  opacity: 0.7;
+}
+
+/* Hero Content Panel (Foreground Text Overlay) */
+.hero-content {
+  position: relative;
+  z-index: 8;
+  text-align: center;
+  pointer-events: none;
+  padding: 30px;
+  max-width: 90%;
+}
+
+.hero-caption-card {
+  background-color: rgba(236, 234, 225, 0.96);
+  border: 3px double var(--fg-dark);
+  border-radius: 1px;
+  padding: 40px 60px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+  pointer-events: auto;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+  position: relative; /* relative for both stamps */
+}
+
+.hero-caption-card .ransom-note {
+  margin-bottom: 20px;
+}
+
+.hero-caption-card .ransom-char {
+  width: 4rem;
+  height: 5rem;
+  font-size: 2.8rem;
+  box-shadow: var(--shadow-glued);
+}
+
+.hero-subtitle {
+  font-family: var(--font-title);
+  font-size: 2.4rem; /* Larger and taller for Reenie Beenie */
+  font-weight: bold;
+  text-transform: capitalize;
+  color: var(--film-blue);
+  letter-spacing: 2px;
+  margin-top: 10px;
+  display: block;
+}
+
+/* Top-right red lightweight visual tape stamp */
+.light-leak-stamp {
+  position: absolute;
+  top: -15px;
+  right: -20px;
+  background-color: var(--film-red);
+  color: var(--bg-paper);
+  font-family: var(--font-handwritten);
+  font-size: 1.4rem;
+  padding: 4px 15px;
+  border-radius: 3px;
+  transform: rotate(12deg);
+  box-shadow: 1px 2px 5px rgba(0,0,0,0.15);
+  border: 1px dashed rgba(255,255,255,0.4);
+  z-index: 10;
+}
+
+/* Bottom-left opposite glued tape stamp in film blue */
+.glued-stamp-bottom {
+  position: absolute;
+  bottom: -22px;
+  left: -25px;
+  background-color: var(--film-blue);
+  color: var(--bg-paper);
+  font-family: var(--font-handwritten);
+  font-size: 1.5rem;
+  padding: 4px 18px;
+  border-radius: 2px;
+  transform: rotate(-10deg);
+  box-shadow: var(--shadow-glued);
+  border: 1px dashed rgba(255,255,255,0.4);
+  z-index: 10;
+}
+
+/* -------------------------------------------------------------
+ * 5. General Section Layouts
+ * ------------------------------------------------------------- */
+section {
+  padding: 100px 8%;
+  position: relative;
+  border-bottom: 2px solid var(--card-grey);
+}
+
+.section-title {
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-family: var(--font-title);
+  font-weight: bold;
+  font-size: 3.5rem; /* Larger because Reenie Beenie is tall and handwritten */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--fg-dark);
+  display: inline-block;
+  position: relative;
+}
+
+/* Handwritten scribble label above section titles */
+.section-title::before {
+  content: attr(data-tag);
+  position: absolute;
+  top: -22px;
+  left: 2px;
+  font-family: var(--font-handwritten);
+  font-size: 2.1rem;
+  color: var(--film-red);
+  transform: rotate(-3deg);
+  letter-spacing: 1px;
+}
+
+/* -------------------------------------------------------------
+ * 6. "The Project" Section (Warm Paper Scrapbook Vibe)
+ * ------------------------------------------------------------- */
+#project {
+  background-color: var(--bg-paper); /* Muted warm cream paper */
+  color: var(--fg-dark);
+}
+
+#project .section-title h2 {
+  color: var(--fg-dark);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.project-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.project-text p {
+  margin-bottom: 1.5rem;
+}
+
+.project-text p strong {
+  color: var(--film-blue); /* High-contrast blue highlight */
+  font-weight: 700;
+}
+
+/* Polaroid Collage Showcase in Project Section */
+.polaroid-collage {
+  position: relative;
+  height: 420px;
+  width: 100%;
+}
+
+.polaroid-card {
+  position: absolute;
+  background-color: #fff;
+  padding: 15px 15px 35px 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 1px;
+  width: 250px;
+  transition: transform var(--transition-classic), z-index 0s;
+  cursor: pointer;
+}
+
+.polaroid-card:hover {
+  transform: scale(1.05) rotate(0deg) !important;
+  z-index: 20 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.polaroid-card .img-placeholder {
+  width: 100%;
+  height: 190px;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-typewriter);
+  font-size: 0.7rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background-size: cover;
+  background-position: center;
+}
+
+.polaroid-card .caption {
+  margin-top: 15px;
+  font-family: var(--font-handwritten);
+  font-size: 1.6rem;
+  color: #111;
+  text-align: center;
+  transform: rotate(-1deg);
+}
+
+/* Hardcoded collage overlap offsets */
+.pc-1 {
+  top: 10px;
+  left: 20px;
+  transform: rotate(-8deg);
+  z-index: 3;
+}
+
+.pc-2 {
+  top: 50px;
+  right: 20px;
+  transform: rotate(6deg);
+  z-index: 2;
+}
+
+.pc-3 {
+  bottom: 10px;
+  left: 80px;
+  transform: rotate(-2deg);
+  z-index: 4;
+}
+
+/* -------------------------------------------------------------
+ * 7. "Visualization" Section (Vintage Cream/Green Vibe)
+ * ------------------------------------------------------------- */
+#visualization {
+  background-color: var(--bg-paper);
+}
+
+.viz-intro {
+  max-width: 800px;
+  margin-bottom: 50px;
+}
+
+.viz-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--film-green-dark);
+}
+
+.viz-intro p strong {
+  color: var(--film-red-dark);
+  font-weight: 700;
+}
+
+/* Polaroid Container for Interactive Chart */
+.chart-container-card {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 1px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid var(--card-grey);
+  width: 100%;
+  margin-top: 30px;
+  position: relative;
+}
+
+.chart-polaroid-frame {
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 10px;
+  background-color: #fafaf9;
+}
+
+/* Plotly container layout */
+.plotly-chart-wrapper {
+  width: 100%;
+  height: 650px;
+  position: relative;
+}
+
+/* Handdrawn warning badge on visualization details */
+.viz-badge {
+  display: inline-block;
+  margin-top: 20px;
+  font-family: var(--font-typewriter);
+  font-size: 0.85rem;
+  background: var(--card-tan);
+  padding: 10px 18px;
+  border-left: 4px solid var(--film-red);
+  color: var(--fg-dark);
+}
+
+/* -------------------------------------------------------------
+ * 8. "About" Section (Warm Paper Scrapbook Vibe)
+ * ------------------------------------------------------------- */
+#about {
+  background-color: var(--bg-paper); /* Unified warm cream paper */
+  color: var(--fg-dark);
+}
+
+#about .section-title h2 {
+  color: var(--fg-dark);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-portrait {
+  background-color: #fff;
+  padding: 15px 15px 45px 15px;
+  box-shadow: var(--shadow-glued);
+  transform: rotate(-3deg);
+  width: 100%;
+  max-width: 320px;
+  justify-self: center;
+}
+
+.about-portrait .img-placeholder {
+  width: 100%;
+  height: 280px;
+  background-color: #e5decb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #645f51;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background-size: cover;
+  background-position: center;
+}
+
+.about-portrait .caption {
+  margin-top: 15px;
+  font-family: var(--font-handwritten);
+  font-size: 2.2rem; /* Larger for Reenie Beenie readability */
+  color: #111;
+  text-align: center;
+  font-weight: bold;
+}
+
+.about-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.about-text p {
+  margin-bottom: 1.5rem;
+}
+
+.about-text p strong {
+  color: var(--film-green); /* High-contrast green highlight */
+  font-weight: 700;
+}
+
+.cursive-sign {
+  font-family: var(--font-handwritten);
+  font-size: 3rem; /* Larger and bolder for signature stamp */
+  font-weight: bold;
+  color: var(--film-red);
+  margin-top: 15px;
+  display: block;
+}
+
+/* -------------------------------------------------------------
+ * 9. Footer (Retro dark paper styling)
+ * ------------------------------------------------------------- */
+footer {
+  background-color: #141414;
+  color: #8f8f8f;
+  padding: 60px 4% 40px 4%;
+  text-align: center;
+  border-top: 4px solid var(--film-red-dark);
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  letter-spacing: 0.5px;
+  line-height: 1.8;
+  position: relative;
+  z-index: 10;
+}
+
+footer .git-link {
+  color: #fff;
+  font-size: 2rem;
+  display: inline-block;
+  margin-bottom: 20px;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s ease;
+}
+
+footer .git-link:hover {
+  color: var(--film-red);
+  transform: scale(1.2) rotate(8deg);
+}
+
+footer p.dedication {
+  max-width: 650px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* -------------------------------------------------------------
+ * 10. Responsive Design Media Queries
+ * ------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .project-grid, .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .about-portrait {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 0;
+    gap: 15px;
+  }
+  
+  nav ul {
+    gap: 1.5rem;
+  }
+  
+  .hero-caption-card {
+    padding: 25px 30px;
+  }
+  
+  .hero-caption-card .ransom-char {
+    width: 2.5rem;
+    height: 3.2rem;
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+  }
+  
+  section {
+    padding: 60px 5%;
+  }
+  
+  .plotly-chart-wrapper {
+    height: 450px;
+  }
+}

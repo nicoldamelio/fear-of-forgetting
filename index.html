@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Optimization -->
+  <title>FoF — Fear of Forgetting: A Presentation of Scrapbooks and Memory Evolution</title>
+  <meta name="description" content="An interactive research showcase exploring memory preservation, diary writing, and photographic documentation through the lens of increasing life responsibilities. Developed for the University of Bologna.">
+  
+  <!-- Modern FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Plotly.js for interactive rendering (loaded via standard secure CDN) -->
+  <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Film Photography Grain Overlay (Interactive and Animated) -->
+  <div class="film-grain"></div>
+  
+  <!-- Celluloid Flashing Dust & Scratches Overlay -->
+  <div class="film-scratches"></div>
+
+  <!-- Navigation Header -->
+  <header>
+    <a href="#" class="logo" data-ransom="FoF" id="nav-logo">FoF</a>
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="#project">The Project</a></li>
+        <li><a href="#visualization">Visualization</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section with Timed Synchronized Polaroid Split Screen Background -->
+  <section class="hero" id="home">
+    
+    <!-- Top Half Slideshow Grid (Analog Color - 4 Columns) -->
+    <div class="hero-split-panel hero-top">
+      <div class="hero-grid-container">
+        <div class="slideshow-container col-1"></div>
+        <div class="slideshow-container col-2"></div>
+        <div class="slideshow-container col-3"></div>
+        <div class="slideshow-container col-4"></div>
+      </div>
+    </div>
+    
+    <!-- Middle Polaroid Textured Card Margin Divider -->
+    <div class="hero-divider"></div>
+    
+    <!-- Bottom Half Slideshow Grid (High-contrast B&W - 4 Columns) -->
+    <div class="hero-split-panel hero-bottom">
+      <div class="hero-grid-container">
+        <div class="slideshow-container col-1"></div>
+        <div class="slideshow-container col-2"></div>
+        <div class="slideshow-container col-3"></div>
+        <div class="slideshow-container col-4"></div>
+      </div>
+    </div>
+
+    <!-- Foreground Content Card overlay -->
+    <div class="hero-content">
+      <div class="hero-caption-card">
+        <span class="light-leak-stamp">2021 — 2026</span>
+        <span class="glued-stamp-bottom">MEMORIES</span>
+        <h1 data-ransom="FoF" aria-label="FoF">FoF</h1>
+        <span class="hero-subtitle">Fear of Forgetting</span>
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- "The Project" Section (Desaturated Teal-Blue Analog Film Theme) -->
+  <section id="project" data-tag="DIARY & FILM">
+    <div class="section-title">
+      <h2>The Project</h2>
+    </div>
+    
+    <div class="project-grid">
+      <div class="project-text">
+        <p>
+          <strong>The Fear of Forgetting</strong> is a deeply personal, analytical exploration of the mechanisms we use to anchor our passing moments. Over a five-year university timeline, this project acts as an archaeological dig into my own daily habits of self-documentation, examining how the dual forces of <strong>analog journaling</strong> and <strong>digital/film photography</strong> shift as the weight of life responsibilities increases.
+        </p>
+        <p>
+          Through decades, diary pages have collected raw ink, and rolls of film have captured passing lights. But as academic demands, career obligations, and exams compounded, the physical camera was often left behind on the shelf. The visual footprint of my daily experiences began to shrink, giving way to a more internal, reflective practice—journaling.
+        </p>
+        <p>
+          By cataloging every iPhone photo, digital camera capture, diary page, and exam session from <strong>September 2021 to April 2026</strong>, this project bridges the subjective anxiety of losing memories with objective, data-driven insights. It is a testament to how our documentation habits are not constant, but fluid reactions to stress, time, and personal growth.
+        </p>
+      </div>
+      
+      <!-- Polaroid Collage Interactive Showcase -->
+      <div class="polaroid-collage">
+        <div class="polaroid-card pc-1">
+          <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600')"></div>
+          <div class="caption">first day, Sep-21</div>
+        </div>
+        
+        <div class="polaroid-card pc-2">
+          <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=600')"></div>
+          <div class="caption">media shift, Dec-24</div>
+        </div>
+        
+        <div class="polaroid-card pc-3">
+          <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=600')"></div>
+          <div class="caption">fading rolls, Apr-26</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- "Visualization" Section (Warm Cream/Teal Theme, Interactive Plotly Chart) -->
+  <section id="visualization" data-tag="THE EVOLUTION">
+    <div class="section-title">
+      <h2>The Visualization</h2>
+    </div>
+    
+    <div class="viz-intro">
+      <p>
+        The final step of this analysis brings together all previous components into a single visualization, allowing a direct comparison between the decline in media capture, the increase in journal writing, and the evolution of my Responsibility Index, defined as the combined effect of academic and work-related load.
+      </p>
+      <p>
+        All variables are represented as time series across the five university years, in order to <strong>highlight how my Fear of Forgetting-related behaviors evolved alongside changing life conditions</strong>. This final overview in a line chart aims to provide a consolidated perspective on the relationship between my documentation habits, increasing responsibilities, and broader personal development throughout my time at university.
+      </p>
+    </div>
+
+    <!-- Responsive Polaroid Chart Wrapper -->
+    <div class="chart-container-card">
+      <div class="chart-polaroid-frame">
+        <!-- Interactive responsive Plotly.js anchor -->
+        <div id="plotly-chart" class="plotly-chart-wrapper"></div>
+      </div>
+      
+      <div class="viz-badge">
+        <i class="fa-solid fa-triangle-exclamation"></i> &nbsp;
+        <strong>Analytical Note:</strong> All values are standardized to a 0–100% scale to isolate trends and equalize scale magnitudes. Hover over specific months to see raw file counts and responsibility metrics.
+      </div>
+    </div>
+  </section>
+
+  <!-- "About" Section (Analog Moss Green Theme) -->
+  <section id="about" data-tag="THE CREATOR">
+    <div class="section-title">
+      <h2>About</h2>
+    </div>
+    
+    <div class="about-grid">
+      <!-- Portrait Card -->
+      <div class="about-portrait">
+        <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600')"></div>
+        <div class="caption">me, Bologna 2026</div>
+      </div>
+      
+      <div class="about-text">
+        <p>
+          I am a student currently based in Bologna, deeply fascinated by memory, archives, and the digital footprints we leave behind. Navigating the intersection of the physical and virtual world, I have always sought solace in the tangible weight of a paper diary and the silver-halide grains of camera film.
+        </p>
+        <p>
+          This project represents my final analysis and submission, combining tools of data exploration, statistics, and creative UI engineering to examine the subjective feelings of memory loss in an objective format. 
+        </p>
+        <p>
+          I hope this case study encourages others to think about their own preservation patterns—how we document, what we decide is worth saving, and how our changing life cycles reshape what we choose to remember.
+        </p>
+        <span class="cursive-sign">Nicol Damelio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <!-- Interactive Center Github Repo Link -->
+    <a href="https://github.com/nicoldamelio/fear-of-forgetting" class="git-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
+      <i class="fab fa-github"></i>
+    </a>
+    
+    <p class="dedication">
+      This project is developed for the Open Access and Digital Ethics course (a.y. 2025/2026) within the Digital Humanities and Digital Knowledge Master's Degree at University of Bologna.
+    </p>
+  </footer>
+
+  <!-- Core Javascript File -->
+  <script src="script.js"></script>
+</body>
+</html>
