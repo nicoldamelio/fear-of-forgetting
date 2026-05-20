@@ -87,25 +87,25 @@ function initSplitSlideshow() {
 
   // Premium, desaturated film-aesthetic Unsplash images as placeholders
   const topImages = [
-    'https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=600', // Red fabric, warm light
-    'https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=600', // Forest, deep warm greens
-    'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=600', // Vintage Polaroid Camera
-    'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600', // Desaturated blue beach
-    'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=600', // Trees & warm sky glow
-    'https://images.unsplash.com/photo-1500485035595-cbe6f645feb1?q=80&w=600', // Hand-woven orange yarn
-    'https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600', // Retro Polaroid on table
-    'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600'  // Sunbeams in deep woods
+    'img/DSC03636.JPG',
+    'img/DSC04197.JPG',
+    'img/DSC04245.JPG',
+    'img/DSC04336.JPG',
+    'img/DSC04825.JPG',
+    'img/DSC05443.JPG',
+    'img/DSC05465.JPG',
+    'img/DSC05635.JPG'
   ];
 
   const bottomImages = [
-    'https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=600', // B&W stone spiral stairs
-    'https://images.unsplash.com/photo-1482862549707-f63cb32c5fd9?q=80&w=600', // B&W misty lake mountains
-    'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=600', // B&W open retro notebook
-    'https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?q=80&w=600', // B&W trees / branch detail
-    'https://images.unsplash.com/photo-1495616811223-4d98c6e968ab?q=80&w=600', // B&W flock of birds soaring
-    'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600', // B&W stacked retro items
-    'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600', // B&W foggy valley trees
-    'https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=600'  // B&W rows of old books
+    'img/DSC05662.JPG',
+    'img/DSC06061.JPG',
+    'img/DSC06819.JPG',
+    'img/DSC07029.JPG',
+    'img/DSC07228.JPG',
+    'img/DSC07248.JPG',
+    'img/DSC07262.JPG',
+    'img/DSC07328.JPG'
   ];
 
   // Paper card divider background tones
@@ -323,8 +323,8 @@ function initInteractiveChart() {
     yanchor: 'bottom',
     font: {
       size: 11,
-      color: 'rgba(80, 80, 80, 0.8)',
-      family: 'Courier New, monospace',
+      color: '#000000',
+      family: "'Indie Flower', cursive, sans-serif",
       weight: 'bold'
     }
   }));
@@ -345,8 +345,8 @@ function initInteractiveChart() {
     y: 1.16,
     xanchor: 'left',
     yanchor: 'top',
-    text: `<span style='font-size: 18px; font-weight: bold; color: #1b1b1b;'>${titleText}</span><br>` +
-          `<span style='font-size: 12.5px; color: #555555; line-height: 1.4; display: block;'><i>${subtitleText}</i></span>`,
+    text: `<span style='font-size: 18px; font-weight: bold; color: #000000;'>${titleText}</span><br>` +
+          `<span style='font-size: 12.5px; color: #000000; line-height: 1.4; display: block;'><i>${subtitleText}</i></span>`,
     showarrow: false,
     align: 'left'
   });
@@ -355,7 +355,7 @@ function initInteractiveChart() {
   const layout = {
     font: {
       family: "'Indie Flower', cursive, sans-serif", // User Google Font stack
-      color: '#1b1b1b'
+      color: '#000000'
     },
     plot_bgcolor: '#fafaf9',  // Warm off-white plot back
     paper_bgcolor: '#ffffff', // Clean white border back

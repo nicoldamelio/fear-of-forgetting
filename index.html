@@ -16,6 +16,7 @@
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="img/logo.png">
 </head>
 <body>
 
@@ -27,12 +28,14 @@
 
   <!-- Navigation Header -->
   <header>
-    <a href="#" class="logo" data-ransom="FoF" id="nav-logo">FoF</a>
+    <a href="#" class="logo" id="nav-logo">
+      <img src="img/logo.png" alt="FoF Logo" class="nav-logo-img">
+    </a>
     <nav aria-label="Main Navigation">
       <ul>
-        <li><a href="#project">The Project</a></li>
-        <li><a href="#visualization">Visualization</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#project">the project</a></li>
+        <li><a href="#visualization">visualization</a></li>
+        <li><a href="#about">about</a></li>
       </ul>
     </nav>
   </header>
@@ -66,9 +69,11 @@
     <!-- Foreground Content Card overlay -->
     <div class="hero-content">
       <div class="hero-caption-card">
-        <span class="light-leak-stamp">2021 — 2026</span>
-        <span class="glued-stamp-bottom">MEMORIES</span>
-        <h1 data-ransom="FoF" aria-label="FoF">FoF</h1>
+        <span class="light-leak-stamp"></span>
+        <span class="glued-stamp-bottom"></span>
+        <h1 class="hero-title">
+          <img src="img/logo.png" alt="FoF" class="hero-logo-img">
+        </h1>
         <span class="hero-subtitle">Fear of Forgetting</span>
       </div>
     </div>
@@ -92,24 +97,6 @@
         <p>
           By cataloging every iPhone photo, digital camera capture, diary page, and exam session from <strong>September 2021 to April 2026</strong>, this project bridges the subjective anxiety of losing memories with objective, data-driven insights. It is a testament to how our documentation habits are not constant, but fluid reactions to stress, time, and personal growth.
         </p>
-      </div>
-      
-      <!-- Polaroid Collage Interactive Showcase -->
-      <div class="polaroid-collage">
-        <div class="polaroid-card pc-1">
-          <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600')"></div>
-          <div class="caption">first day, Sep-21</div>
-        </div>
-        
-        <div class="polaroid-card pc-2">
-          <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=600')"></div>
-          <div class="caption">media shift, Dec-24</div>
-        </div>
-        
-        <div class="polaroid-card pc-3">
-          <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=600')"></div>
-          <div class="caption">fading rolls, Apr-26</div>
-        </div>
       </div>
     </div>
   </section>
@@ -143,30 +130,22 @@
     </div>
   </section>
 
-  <!-- "About" Section (Analog Moss Green Theme) -->
-  <section id="about" data-tag="THE CREATOR">
-    <div class="section-title">
-      <h2>About</h2>
-    </div>
-    
+  <!-- Prefooter "About" Section (Same color as navbar with lower opacity) -->
+  <section id="about">
     <div class="about-grid">
-      <!-- Portrait Card -->
+      <!-- Portrait Polaroid Card with no text on the bottom frame -->
       <div class="about-portrait">
-        <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600')"></div>
-        <div class="caption">me, Bologna 2026</div>
+        <div class="img-placeholder" style="background-image: url('img/DSC05039.JPG')"></div>
       </div>
       
+      <!-- Shortened Prefooter Text Column on the right -->
       <div class="about-text">
         <p>
-          I am a student currently based in Bologna, deeply fascinated by memory, archives, and the digital footprints we leave behind. Navigating the intersection of the physical and virtual world, I have always sought solace in the tangible weight of a paper diary and the silver-halide grains of camera film.
+          I am Nicol Damelio, a student currently based in Bologna, deeply fascinated by memory, archives, and digital footprints. This case study combines statistical exploration and scrapbook aesthetics to examine the anxiety of memory loss and preservation patterns.
         </p>
         <p>
-          This project represents my final analysis and submission, combining tools of data exploration, statistics, and creative UI engineering to examine the subjective feelings of memory loss in an objective format. 
+          Through the intersection of analog diaries and film photography, this project reflects on how our documentation habits adapt to stress, exams, and university life cycles, reshaping what we decide is worth saving.
         </p>
-        <p>
-          I hope this case study encourages others to think about their own preservation patterns—how we document, what we decide is worth saving, and how our changing life cycles reshape what we choose to remember.
-        </p>
-        <span class="cursive-sign">Nicol Damelio</span>
       </div>
     </div>
   </section>

@@ -6,28 +6,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Reenie+Beenie&family=Outfit:wght@300;400;600;800&display=swap');
 
 :root {
-  /* Color Palette - Desaturated Analog Film Styles (Polaroid/35mm) */
-  --bg-paper: #f4eedf;       /* Vintage desaturated paper cream with more warmth */
-  --fg-dark: #1b1b1b;        /* Charcoal film black */
-  --film-blue-dark: #1f2f3c; /* Shadow film desaturated blue (project color used for nav) */
-  --film-blue: #2d4554;      /* Mid-tone film desaturated blue */
-  --film-blue-light: #526f82;/* Sky desaturated blue-grey */
-  --film-green-dark: #2a382c;/* Shadow desaturated moss green */
-  --film-green: #3c4f3f;     /* Mid-tone Polaroid green */
-  --film-green-light: #647a67;/* Vintage leaf green-grey */
-  --film-red-dark: #6e2723;  /* Desaturated dark red */
-  --film-red: #8f3833;       /* Red accent */
-  --card-tan: #e2decb;       /* Polaroid paper backing card */
-  --card-grey: #dad5c3;      /* Darker card stock */
+  /* Color Palette - Steel Blue, Terracotta, and Lavender Gray */
+  --bg-paper: #D6CAD0;       /* Lavender Gray background */
+  --fg-dark: #000000;        /* Pure black text color */
+  --film-blue-dark: #6474A1; /* Steel Blue (Navbar / Prefooter base) */
+  --film-blue: #6474A1;      
+  --film-blue-light: #8ba0cf;
+  --film-green-dark: #000000;
+  --film-green: #6474A1;     
+  --film-green-light: #8ba0cf;
+  --film-red-dark: #78412B;  /* Terracotta (Footer base) */
+  --film-red: #78412B;       /* Accents */
+  --card-tan: #dad5c3;       /* Polaroid tan card */
+  --card-grey: #c6bec3;      
   
-  /* Font Stacks */
+  /* Font Stacks - All text uses Indie Flower */
   --font-body: 'Indie Flower', cursive, sans-serif;
-  --font-title: 'Reenie Beenie', cursive, sans-serif;
-  --font-sans: 'Outfit', sans-serif;
-  --font-handwritten: 'Reenie Beenie', cursive, sans-serif;
+  --font-title: 'Indie Flower', cursive, sans-serif;
+  --font-sans: 'Indie Flower', cursive, sans-serif;
+  --font-handwritten: 'Indie Flower', cursive, sans-serif;
+  --font-typewriter: 'Indie Flower', cursive, sans-serif;
   
   --transition-classic: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --shadow-glued: 2px 4px 8px rgba(0, 0, 0, 0.18), 1px 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-glued: 2px 4px 8px rgba(0, 0, 0, 0.12), 1px 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -41,7 +42,7 @@ html {
   background-color: var(--bg-paper);
   color: var(--fg-dark);
   font-family: var(--font-body);
-  font-size: 20px; /* Slightly larger because Indie Flower is highly organic and legible when large */
+  font-size: 15px; /* Reduced baseline font size to make text smaller */
   line-height: 1.6;
 }
 
@@ -280,70 +281,53 @@ header {
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-/* Logo ransom spacing */
+/* Logo Image Styling & Interaction */
 header .logo {
   text-decoration: none;
   outline: none;
   display: inline-flex;
   align-items: center;
+}
+
+.nav-logo-img {
+  height: 48px; /* Clean, perfectly sized height */
+  width: auto;
+  display: block;
   transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-header .logo:hover {
-  transform: translateY(-4px) rotate(2deg) scale(1.05); /* Logo hovers as a whole! */
-}
-
-header .logo .ransom-char {
-  width: 1.8rem;
-  height: 2.2rem;
-  font-size: 1.2rem;
-  box-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+header .logo:hover .nav-logo-img {
+  transform: scale(1.15); /* Slightly bigger on hover to show interactivity */
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  gap: 2.5rem;
+  gap: 2.2rem;
   align-items: center;
 }
 
 nav ul li {
-  font-family: var(--font-title);
-  font-size: 2.1rem; /* Reenie Beenie sizing */
+  font-family: var(--font-body); /* Indie Flower font */
+  font-size: 1.25rem; /* Balanced, smaller size */
   font-weight: bold;
 }
 
 nav ul li a {
   text-decoration: none;
-  font-size: 1rem;
-  color: var(--bg-paper); /* Light cream for excellent legibility on dark blue header */
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: #ffffff; /* Keep navbar color used now (high contrast cream/white) */
+  text-transform: lowercase; /* Lowercase navigation */
+  display: inline-block;
   position: relative;
   padding: 5px 0;
-  transition: color var(--transition-classic);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: center;
 }
 
+/* Hover: dont underline, tilt text a tiny bit left and make slightly bigger, keep color */
 nav ul li a:hover {
-  color: var(--film-red);
-}
-
-/* Hand-drawn underline */
-nav ul li a::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2.5px;
-  background: var(--bg-paper);
-  background-image: linear-gradient(to right, var(--bg-paper) 70%, transparent 100%);
-  transition: width 0.35s cubic-bezier(0.19, 1, 0.22, 1);
-  clip-path: polygon(0% 12%, 100% 0%, 98% 85%, 2% 100%);
-}
-
-nav ul li a:hover::after {
-  width: 100%;
+  text-decoration: none;
+  transform: rotate(-3deg) scale(1.08);
 }
 
 /* -------------------------------------------------------------
@@ -477,60 +461,53 @@ nav ul li a:hover::after {
   position: relative; /* relative for both stamps */
 }
 
-.hero-caption-card .ransom-note {
-  margin-bottom: 20px;
-}
-
-.hero-caption-card .ransom-char {
-  width: 4rem;
-  height: 5rem;
-  font-size: 2.8rem;
-  box-shadow: var(--shadow-glued);
+.hero-logo-img {
+  max-width: 200px; /* Dimension matches previous size perfectly */
+  height: auto;
+  display: block;
+  margin: 0 auto 15px auto;
+  filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.15));
 }
 
 .hero-subtitle {
-  font-family: var(--font-title);
-  font-size: 2.4rem; /* Larger and taller for Reenie Beenie */
+  font-family: var(--font-body); /* Indie Flower font */
+  font-size: 1.4rem; /* Balanced, smaller size */
   font-weight: bold;
   text-transform: capitalize;
   color: var(--film-blue);
-  letter-spacing: 2px;
-  margin-top: 10px;
+  letter-spacing: 1.5px;
+  margin-top: 5px;
   display: block;
 }
 
-/* Top-right red lightweight visual tape stamp */
+/* Top-right small visual tape piece */
 .light-leak-stamp {
   position: absolute;
-  top: -15px;
-  right: -20px;
-  background-color: var(--film-red);
-  color: var(--bg-paper);
-  font-family: var(--font-handwritten);
-  font-size: 1.4rem;
-  padding: 4px 15px;
-  border-radius: 3px;
-  transform: rotate(12deg);
-  box-shadow: 1px 2px 5px rgba(0,0,0,0.15);
-  border: 1px dashed rgba(255,255,255,0.4);
+  top: -12px;
+  right: -15px;
+  background-color: #72673d; /* Dark mossy tape tone */
+  width: 55px;
+  height: 18px;
+  transform: rotate(15deg);
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.18);
   z-index: 10;
+  display: block;
+  border-radius: 1px;
 }
 
-/* Bottom-left opposite glued tape stamp in film blue */
+/* Bottom-left small visual tape piece in matching color */
 .glued-stamp-bottom {
   position: absolute;
-  bottom: -22px;
-  left: -25px;
-  background-color: var(--film-blue);
-  color: var(--bg-paper);
-  font-family: var(--font-handwritten);
-  font-size: 1.5rem;
-  padding: 4px 18px;
-  border-radius: 2px;
-  transform: rotate(-10deg);
-  box-shadow: var(--shadow-glued);
-  border: 1px dashed rgba(255,255,255,0.4);
+  bottom: -12px;
+  left: -15px;
+  background-color: #72673d; /* Dark mossy tape tone */
+  width: 55px;
+  height: 18px;
+  transform: rotate(-12deg);
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.18);
   z-index: 10;
+  display: block;
+  border-radius: 1px;
 }
 
 /* -------------------------------------------------------------
@@ -550,7 +527,7 @@ section {
 .section-title h2 {
   font-family: var(--font-title);
   font-weight: bold;
-  font-size: 3.5rem; /* Larger because Reenie Beenie is tall and handwritten */
+  font-size: 2.2rem; /* Reduced size to match Indie Flower */
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--fg-dark);
@@ -562,10 +539,10 @@ section {
 .section-title::before {
   content: attr(data-tag);
   position: absolute;
-  top: -22px;
+  top: -18px;
   left: 2px;
   font-family: var(--font-handwritten);
-  font-size: 2.1rem;
+  font-size: 1.1rem; /* Smaller handwritten tags */
   color: var(--film-red);
   transform: rotate(-3deg);
   letter-spacing: 1px;
@@ -584,14 +561,14 @@ section {
 }
 
 .project-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 4rem;
-  align-items: center;
+  display: block;
+  width: 60%; /* Occupies exactly 3/5 of the viewport width */
+  margin: 0 auto;
+  text-align: center; /* Centered layout */
 }
 
 .project-text {
-  font-size: 1.2rem;
+  font-size: 1.05rem; /* Smaller, highly readable body text */
   line-height: 1.8;
 }
 
@@ -685,15 +662,16 @@ section {
 }
 
 .viz-intro {
-  max-width: 800px;
-  margin-bottom: 50px;
+  width: 60%; /* Same 3/5 viewport wide layout as the project section */
+  margin: 0 auto 50px auto;
+  text-align: center;
 }
 
 .viz-intro p {
-  font-size: 1.15rem;
+  font-size: 1.05rem; /* Smaller, highly readable body text */
   line-height: 1.8;
   margin-bottom: 1.5rem;
-  color: var(--film-green-dark);
+  color: var(--fg-dark); /* Keep color black */
 }
 
 .viz-intro p strong {
@@ -741,13 +719,13 @@ section {
 /* -------------------------------------------------------------
  * 8. "About" Section (Warm Paper Scrapbook Vibe)
  * ------------------------------------------------------------- */
+/* -------------------------------------------------------------
+ * 8. "About" Section (Prefooter: Steel Blue with lower opacity)
+ * ------------------------------------------------------------- */
 #about {
-  background-color: var(--bg-paper); /* Unified warm cream paper */
+  background-color: rgba(100, 116, 161, 0.18) !important; /* Steel Blue with lower opacity */
   color: var(--fg-dark);
-}
-
-#about .section-title h2 {
-  color: var(--fg-dark);
+  padding: 60px 8%;
 }
 
 .about-grid {
@@ -759,17 +737,17 @@ section {
 
 .about-portrait {
   background-color: #fff;
-  padding: 15px 15px 45px 15px;
+  padding: 15px; /* Symmetrical smaller frame at the bottom with no text space */
   box-shadow: var(--shadow-glued);
   transform: rotate(-3deg);
   width: 100%;
-  max-width: 320px;
+  max-width: 250px; /* Slightly smaller portrait card */
   justify-self: center;
 }
 
 .about-portrait .img-placeholder {
   width: 100%;
-  height: 280px;
+  height: 250px;
   background-color: #e5decb;
   display: flex;
   align-items: center;
@@ -784,17 +762,8 @@ section {
   background-position: center;
 }
 
-.about-portrait .caption {
-  margin-top: 15px;
-  font-family: var(--font-handwritten);
-  font-size: 2.2rem; /* Larger for Reenie Beenie readability */
-  color: #111;
-  text-align: center;
-  font-weight: bold;
-}
-
 .about-text {
-  font-size: 1.2rem;
+  font-size: 1rem; /* Smaller prefooter text size */
   line-height: 1.8;
 }
 
@@ -803,30 +772,21 @@ section {
 }
 
 .about-text p strong {
-  color: var(--film-green); /* High-contrast green highlight */
+  color: var(--film-red-dark);
   font-weight: 700;
 }
 
-.cursive-sign {
-  font-family: var(--font-handwritten);
-  font-size: 3rem; /* Larger and bolder for signature stamp */
-  font-weight: bold;
-  color: var(--film-red);
-  margin-top: 15px;
-  display: block;
-}
-
 /* -------------------------------------------------------------
- * 9. Footer (Retro dark paper styling)
+ * 9. Footer (Terracotta red-brown background)
  * ------------------------------------------------------------- */
 footer {
-  background-color: #141414;
-  color: #8f8f8f;
-  padding: 60px 4% 40px 4%;
+  background-color: var(--film-red-dark); /* Terracotta background #78412B */
+  color: rgba(255, 255, 255, 0.85); /* Legible contrasting light cream/white */
+  padding: 50px 4% 35px 4%;
   text-align: center;
-  border-top: 4px solid var(--film-red-dark);
-  font-size: 0.85rem;
-  font-family: var(--font-sans);
+  border-top: none;
+  font-size: 0.78rem; /* Smaller footer text */
+  font-family: var(--font-body);
   letter-spacing: 0.5px;
   line-height: 1.8;
   position: relative;
@@ -834,16 +794,16 @@ footer {
 }
 
 footer .git-link {
-  color: #fff;
-  font-size: 2rem;
+  color: #ffffff; /* Keep original color */
+  font-size: 1.8rem;
   display: inline-block;
-  margin-bottom: 20px;
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s ease;
+  margin-bottom: 15px;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* On hover, don't change color but scale the icon slightly bigger */
 footer .git-link:hover {
-  color: var(--film-red);
-  transform: scale(1.2) rotate(8deg);
+  transform: scale(1.18);
 }
 
 footer p.dedication {
@@ -856,9 +816,13 @@ footer p.dedication {
  * 10. Responsive Design Media Queries
  * ------------------------------------------------------------- */
 @media (max-width: 1024px) {
-  .project-grid, .about-grid {
+  .project-grid, .viz-intro {
+    width: 85%; /* Spacious but readable width for medium screen viewports */
+  }
+
+  .about-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
   
   .about-portrait {
@@ -868,40 +832,42 @@ footer p.dedication {
 
 @media (max-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 13px; /* Smaller baseline on mobile */
   }
   
   header {
     flex-direction: column;
     height: auto;
     padding: 15px 0;
-    gap: 15px;
+    gap: 12px;
   }
   
   nav ul {
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
   
   .hero-caption-card {
-    padding: 25px 30px;
+    padding: 20px 30px;
   }
   
-  .hero-caption-card .ransom-char {
-    width: 2.5rem;
-    height: 3.2rem;
-    font-size: 1.8rem;
+  .hero-logo-img {
+    max-width: 130px; /* Scaled down hero title logo on mobile */
   }
   
   .hero-subtitle {
-    font-size: 0.9rem;
-    letter-spacing: 3px;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
   }
   
+  .project-grid, .viz-intro {
+    width: 95%; /* Maximum readability on smaller mobile widths */
+  }
+
   section {
-    padding: 60px 5%;
+    padding: 50px 5%;
   }
   
   .plotly-chart-wrapper {
-    height: 450px;
+    height: 400px;
   }
 }
